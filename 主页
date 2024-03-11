@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        .enlarge {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .tab {
+            margin-top: 20px;
+        }
+
+        .tab button {
+            background-color: #ccc;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #bbb;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <p class="enlarge"><strong>聂传统的个人网站</strong></p>
+        <div>
+            <input type="text" value="注册" readonly>
+        </div>
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'login')">登录</button>
+            <button class="tablinks" onclick="openTab(event, 'register_email')">邮箱注册</button>
+            <button class="tablinks" onclick="openTab(event, 'register_phone')">手机号注册</button>
+        </div>
+
+       <div id="login" class="tabcontent" style="display: block;">
+    <h3>登录</h3>
+  <form>
+    <label for="username">用户名:</label>
+    <input type="text" id="username" name="username" placeholder="请输入用户名">
+
+    <label for="password">密码:</label>
+    <input type="password" id="password" name="password" placeholder="请输入密码">
+
+    <button type="submit">登录</button>
+  </form>
+</div>
+
+<div id="register_email" class="tabcontent">
+  <h3>邮箱注册</h3>
+  <form>
+    <label for="email">邮箱地址:</label>
+    <input type="email" id="email" name="email" placeholder="请输入邮箱地址">
+
+    <label for="password">密码:</label>
+    <input type="password" id="password" name="password" placeholder="请输入密码">
+
+    <button type="submit">注册</button>
+  </form>
+</div>
+
+<div id="register_phone" class="tabcontent">
+  <h3>手机号注册</h3>
+  <form>
+    <label for="phone">手机号码:</label>
+    <input type="tel" id="phone" name="phone" placeholder="请输入手机号码">
+
+    <label for="password">密码:</label>
+    <input type="password" id="password" name="password" placeholder="请输入密码">
+
+    <button type="submit">注册</button>
+  </form>
+</div>
+
+  <div class="tab">
+ .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* 标签按钮样式 */
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+/* 活动标签按钮样式 */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* 标签内容样式 */
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+/* 表单输入框样式 */
+input[type=text], input[type=password], input[type=email], input[type=tel]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* 提交按钮样式 */
+button[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* 提交按钮悬停样式 */
+button[type=submit]:hover {
+  opacity: 0.8;
+}
+    </form>
+</div>
+    <script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+
+        // 获取所有tabcontent元素并隐藏它们
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // 获取所有tablinks元素并移除其上的active类
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // 显示当前选定的标签页并将其按钮标记为active
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+		<script>
+    // 页面加载时显示默认的登录模块
+    document.getElementById("login").style.display = "block";
+		}
+		
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取登录表单中的用户名和密码
+  var username = document.getElementById("loginUsername").value;
+  var password = document.getElementById("loginPassword").value;
+
+  // 在这里执行登录的逻辑，例如向服务器发送登录请求
+  // ...
+
+  // 清空表单字段
+  document.getElementById("loginUsername").value = "";
+  document.getElementById("loginPassword").value = "";
+});
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取注册表单中的用户名、密码和电子邮件
+  var username = document.getElementById("registerUsername").value;
+  var password = document.getElementById("registerPassword").value;
+  var email = document.getElementById("registerEmail").value;
+
+  // 在这里执行注册的逻辑，例如向服务器发送注册请求
+  // ...
+
+  // 清空表单字段
+  document.getElementById("registerUsername").value = "";
+  document.getElementById("registerPassword").value = "";
+  document.getElementById("registerEmail").value = "";
+});
+		// 处理登录结果
+function handleLoginResponse(response) {
+  if (response.success) {
+    // 登录成功
+    // 在这里执行登录成功后的操作，例如跳转到用户主页
+    // ...
+  } else {
+    // 登录失败
+    // 在这里显示登录失败的提示信息，例如错误消息
+    // ...
+  }
+}
+
+// 处理注册结果
+function handleRegisterResponse(response) {
+  if (response.success) {
+    // 注册成功
+    // 在这里执行注册成功后的操作，例如显示一个成功注册的消息
+    // ...
+  } else {
+    // 注册失败
+    // 在这里显示注册失败的提示信息，例如错误消息
+    // ...
+  }
+	
+// 发送登录请求
+function loginUser(username, password) {
+  // 模拟Ajax请求，实际情况下应该使用真实的Ajax请求
+  setTimeout(function () {
+    // 模拟服务器返回的响应
+    var loginResponse = {
+      success: true, // 根据实际情况设置登录成功或失败
+    };
+
+    // 调用处理登录结果的函数
+    handleLoginResponse(loginResponse);
+  }, 1000); // 模拟延迟，实际情况中应该使用真实的Ajax请求
+}
+
+// 发送注册请求
+function registerUser(username, password, email) {
+  // 模拟Ajax请求，实际情况下应该使用真实的Ajax请求
+  setTimeout(function () {
+    // 模拟服务器返回的响应
+    var registerResponse = {
+      success: true, // 根据实际情况设置注册成功或失败
+    };
+
+    // 调用处理注册结果的函数
+    handleRegisterResponse(registerResponse);
+  }, 1000); // 模拟延迟，实际情况中应该使用真实的Ajax请求
+}
+
+// 监听登录表单提交事件
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取登录表单中的用户名和密码
+  var username = document.getElementById("loginUsername").value;
+  var password = document.getElementById("loginPassword").value;
+
+  // 发送登录请求
+  loginUser(username, password);
+
+  // 清空表单字段
+  document.getElementById("loginUsername").value = "";
+  document.getElementById("loginPassword").value = "";
+});
+
+// 监听注册表单提交事件
+document.getElementById("registerForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取注册表单中的用户名、密码和电子邮件
+  var username = document.getElementById("registerUsername").value;
+  var password = document.getElementById("registerPassword").value;
+  var email = document.getElementById("registerEmail").value;
+
+  // 发送注册请求
+  registerUser(username, password, email);
+
+  // 清空表单字段
+  document.getElementById("registerUsername").value = "";
+  document.getElementById("registerPassword").value = "";
+  document.getElementById("registerEmail").value = "";
+});
+	// 显示加载状态
+function showLoadingStatus() {
+  // 创建一个加载状态元素
+  var loading = document.createElement("div");
+  loading.classList.add("loading");
+  loading.textContent = "正在加载...";
+
+  // 将加载状态元素添加到页面中
+  document.body.appendChild(loading);
+}
+
+// 隐藏加载状态
+function hideLoadingStatus() {
+  // 移除加载状态元素
+  var loading = document.querySelector(".loading");
+  if (loading) {
+    document.body.removeChild(loading);
+  }
+}
+
+// 显示错误消息
+function showErrorMsg(message) {
+  // 创建一个错误消息元素
+  var error = document.createElement("div");
+  error.classList.add("error");
+  error.textContent = message;
+
+  // 将错误消息元素添加到页面中
+  document.body.appendChild(error);
+}
+
+// 隐藏错误消息
+function hideErrorMsg() {
+  // 移除错误消息元素
+  var error = document.querySelector(".error");
+  if (error) {
+    document.body.removeChild(error);
+  }
+}
+
+// 发送登录请求
+function loginUser(username, password) {
+  // 显示加载状态
+  showLoadingStatus();
+
+  // 模拟Ajax请求，实际情况下应该使用真实的Ajax请求
+  setTimeout(function () {
+    // 模拟服务器返回的响应
+    var loginResponse = {
+      success: true, // 根据实际情况设置登录成功或失败
+    };
+
+    // 隐藏加载状态
+    hideLoadingStatus();
+
+    if (loginResponse.success) {
+      // 登录成功
+      // 在这里执行登录成功后的操作，例如跳转到用户主页
+      // ...
+    } else {
+      // 登录失败
+      // 在这里显示登录失败的提示信息，例如错误消息
+      showErrorMsg("登录失败！请检查用户名和密码。");
+    }
+  }, 1000); // 模拟延迟，实际情况中应该使用真实的Ajax请求
+}
+
+// 发送注册请求
+function registerUser(username, password, email) {
+  // 显示加载状态
+  showLoadingStatus();
+
+  // 模拟Ajax请求，实际情况下应该使用真实的Ajax请求
+  setTimeout(function () {
+    // 模拟服务器返回的响应
+    var registerResponse = {
+      success: true, // 根据实际情况设置注册成功或失败
+    };
+
+    // 隐藏加载状态
+    hideLoadingStatus();
+
+    if (registerResponse.success) {
+      // 注册成功
+      // 在这里执行注册成功后的操作，例如显示一个成功注册的消息
+      // ...
+    } else {
+      // 注册失败
+      // 在这里显示注册失败的提示信息，例如错误消息
+      showErrorMsg("注册失败！请稍后再试。");
+    }
+  }, 1000); // 模拟延迟，实际情况中应该使用真实的Ajax请求
+}
+	// 数据集合
+var data = [
+  { name: "John", age: 25 },
+  { name: "Mary", age: 30 },
+  { name: "Peter", age: 35 },
+  // 这里省略了其他数据...
+];
+
+// 根据条件过滤数据
+function filterData(condition) {
+  // 对数据进行过滤
+  var filteredData = data.filter(function (item) {
+    return item.age >= condition.minAge && item.age <= condition.maxAge;
+  });
+
+  // 在页面中显示过滤后的数据
+  displayData(filteredData);
+}
+
+// 显示数据
+function displayData(data) {
+  // 清空之前的显示内容
+  var container = document.getElementById("dataContainer");
+  container.innerHTML = "";
+
+  // 遍历数据，并创建 DOM 元素显示数据
+  data.forEach(function (item) {
+    var dataItem = document.createElement("div");
+    dataItem.textContent = "Name: " + item.name + " - Age: " + item.age;
+    container.appendChild(dataItem);
+  });
+}
+
+// 监听筛选表单提交事件
+document.getElementById("filterForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取筛选条件
+  var minAge = parseInt(document.getElementById("minAge").value);
+  var maxAge = parseInt(document.getElementById("maxAge").value);
+
+  // 创建条件对象
+  var condition = {
+    minAge: minAge,
+    maxAge: maxAge,
+  };
+
+  // 根据条件过滤并显示数据
+  filterData(condition);
+
+  // 清空表单字段
+  document.getElementById("minAge").value = "";
+  document.getElementById("maxAge").value = "";
+});
+	// 监听登录表单提交事件
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取用户输入的用户名和密码
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // 调用登录函数
+  loginUser(username, password);
+});
+
+// 监听注册表单提交事件
+document.getElementById("registerForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // 防止表单提交时刷新页面
+
+  // 获取用户输入的用户名、密码和邮箱
+  var username = document.getElementById("regUsername").value;
+  var password = document.getElementById("regPassword").value;
+  var email = document.getElementById("email").value;
+
+  // 调用注册函数
+  registerUser(username, password, email);
+});
+
+// 添加其他需要的事件监听或操作...
+// 获取登录按钮元素
+var loginBtn = document.getElementById("loginBtn");
+
+// 添加点击事件监听
+loginBtn.addEventListener("click", function (event) {
+  event.preventDefault(); // 防止按钮的默认行为
+
+  // 在这里执行登录按钮点击后的操作
+  // 例如，显示登录表单或执行其他自定义逻辑
+});
+
+// 获取注册按钮元素
+var registerBtn = document.getElementById("registerBtn");
+
+// 添加点击事件监听
+registerBtn.addEventListener("click", function (event) {
+  event.preventDefault(); // 防止按钮的默认行为
+
+  // 在这里执行注册按钮点击后的操作
+  // 例如，显示注册表单或执行其他自定义逻辑
+});
+
+// 添加其他需要的点击事件监听或操作...
+    </script>
+		
+</html>
